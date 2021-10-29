@@ -13,9 +13,12 @@ class ProductPage(BasePage):
     def solve_quiz(self):
         self.solve_quiz_and_get_code()
 
+    def should_not_be_success_message(self):
+        self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE)
+
     def checking_message_that_product_is_added_to_basket(self):
         self.browser.implicitly_wait(10)
-        assert self.is_element_present(*ProductPageLocators.MESSAGE_FOR_ADDING_PRODUCT_TO_BASKET), "There is no " \
+        assert self.is_element_present(*ProductPageLocators.SUCCESS_MESSAGE), "There is no " \
                                                                                                    "message" \
                                                                                                    "about adding" \
                                                                                                    "product to basket" \

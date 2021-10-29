@@ -10,11 +10,13 @@ from pages.product_page import ProductPage
                                   "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer4",
                                   "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer5",
                                   "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer6",
-                                  pytest.param("http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer7", marks=pytest.mark.xfail),
+                                  pytest.param(
+                                      "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer7",
+                                      marks=pytest.mark.xfail),
                                   "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer8",
                                   "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer9"])
 def test_guest_can_add_product_to_basket(browser, link):
-    #link = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=newYear2019'
+    # link = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=newYear2019'
     page = ProductPage(browser, link)
     page.go_to_product_page()
     page.add_product_to_basket()
@@ -41,3 +43,10 @@ def test_should_be_the_same_price_between_product_and_adding_it_to_bucket(browse
     page.add_product_to_basket()
     page.solve_quiz()
     page.comparing_product_price()
+
+
+def test_should_not_be_success_message_before_adding_product_to_cart(browser):
+    link = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=newYear2019'
+    page = ProductPage(browser, link)
+    page.go_to_product_page()
+    page.should_not_be_success_message()
