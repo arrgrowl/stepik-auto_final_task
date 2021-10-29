@@ -18,12 +18,9 @@ class ProductPage(BasePage):
 
     def checking_message_that_product_is_added_to_basket(self):
         self.browser.implicitly_wait(10)
-        assert self.is_element_present(*ProductPageLocators.SUCCESS_MESSAGE), "There is no " \
-                                                                                                   "message" \
-                                                                                                   "about adding" \
-                                                                                                   "product to basket" \
-                                                                                                   "or product wasn't" \
-                                                                                                   " added to basket"
+        assert self.is_element_present(*ProductPageLocators.SUCCESS_MESSAGE), "There is no message about adding" \
+                                                                              "product to basket or product wasn't" \
+                                                                              " added to basket"
 
     def checking_message_about_basket_total(self):
         assert self.is_element_present(*ProductPageLocators.PRODUCT_PRICE_ON_MESSAGE), 'There is no message about' \

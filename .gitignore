@@ -1,5 +1,5 @@
-requirements.txt
 env/
 .pytest_cache
 *.__pycache__/
 .idea
+pages/pytest_cache/
